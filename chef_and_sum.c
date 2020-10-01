@@ -1,34 +1,36 @@
-#include <stdio.h>
+#include <iostream>
+#include<bits/stdc++.h>
+#define lli long long int
+using namespace std;
 
-int main(void) {
-	int n, i, j ,k,a,b, A[10000], flag;
-	scanf("%d", &n);
-	for(i=0; i<n ; i++){
-	    flag=0;
-	    scanf("%d %d", &a, &b);
-	    for (j=0; j<a; j++){
-	        scanf("%d", &A[j]);
-	    }
-	    for(j=0; j<a; j++){
-	        for(k=j+1; k<a; k++){
-	            if(A[j]+A[k]==b){
-	                flag = 1;
-	                if(flag == 1){
-	                    break;
-	                }
-	            }
-	            if(flag == 1){
-	                    break;
-	                }
+int main() {
+	lli t;
+	cin>>t;
+	while(t--){
+	    lli n,k,i,j;
+	    cin>>n>>k;
+	    int flag = 0;
+	    lli a[n];
+	    for(i = 0; i<n; cin>>a[i], i++);
+	    i = 0;
+	    j = n-1;
+	    sort(a,a+n);
+	    while(i<j){
+	        if ((a[i]+a[j])==k){
+	            flag = 1;
+	            cout<<"Yes"<<"\n";
+	            break;
+	        }
+	        else if((a[i]+a[j])>k){
+	            j--;
+	        }
+	        else{
+	            i++;
 	        }
 	    }
-	    if(flag==1){
-	        printf("Yes\n");
-	    }
-	    else{
-	        printf("No\n");
+	    if (!flag){
+	        cout<<"No"<<"\n";
 	    }
 	}
 	return 0;
 }
-
